@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Remove Author
+{% endblock %}
+
+{% block content %}
+    <h1>Remove Author</h1>
+
+    <p>Are you sure you want to remove {{ author.name }}?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes</button>
+        <a href="{% url 'authors' %}">Cancel</a>
+    </form>
+{% endblock %}

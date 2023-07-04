@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css_files %}
+<link rel="stylesheet" href="{% static "authentication/login.css" %}" />
+{% endblock css_files %}
+
+{%block content%}
+<h2>Register</h2>
+<form action="" , method=POST>
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" class="btn btn-primary" value="Register" />
+</form>
+
+{% endblock content %}

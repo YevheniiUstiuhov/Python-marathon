@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/orders_user.css" %}" />
+{% endblock css_files %}
+  <h1>My Orders</h1>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Book</th>
+      <th>Created At</th>
+      <th>End At</th>
+      <th>Plated End At</th>
+    </tr>
+    {% for order in orders %}
+      <tr>
+        <td>{{ order.pk }}</td>
+        <td>{{ order.book }}</td>
+        <td>{{ order.created_at }}</td>
+        <td>{{ order.end_at }}</td>
+        <td>{{ order.plated_end_at }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

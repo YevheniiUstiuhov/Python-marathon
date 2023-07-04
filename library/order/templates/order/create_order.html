@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/create_order.css" %}" />
+{% endblock css_files %}
+
+{% block content %}
+  <h1>Create an Order</h1>
+  <form method="post">
+    {% csrf_token %}
+    <div>
+      <label for="book">Book:</label>
+      <select name="book" id="book">
+        {% for b in books %}
+          <option value="{{ b.id }}">{{ b.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <label for="plated_end_at">Planned return date:</label>
+      <input type="date" name="plated_end_at" id="plated_end_at" required>
+    </div>
+    <button type="submit">Create Order</button>
+  </form>
+{% endblock %}

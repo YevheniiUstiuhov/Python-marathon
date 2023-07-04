@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "authentication/login.css" %}" />
+{% endblock css_files %}
+
+{%block content%}	
+
+	{% if user.is_authenticated %}
+
+    {% if user.is_staff %}
+    <h1> Hello, librarian {{user.first_name}} </h1>
+    {% else %}
+    <h1> Hello, user {{user.first_name}} </h1>
+    {% endif %}
+    <h2> <a href={% url 'books' %}>Books</a> </h2>
+    <h2> <a href={% url 'logout' %}>Log Out</a> </h2>
+
+    {% else %}
+        <h1> Welcome! </h1>
+        <h2> <a href={% url 'login' %}>Log In</a> </h2>
+    {% endif %}
+
+{% endblock %}

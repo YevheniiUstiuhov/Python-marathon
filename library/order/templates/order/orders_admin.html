@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/orders_admin.css" %}" />
+{% endblock css_files %}
+
+{% block content %}
+  <h1>All Orders</h1>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Book</th>
+      <th>User</th>
+      <th>Created At</th>
+      <th>End At</th>
+      <th>Plated End At</th>
+      <th>Close Order</th>
+    </tr>
+    {% for order in orders %}
+      <tr>
+        <td>{{ order.pk }}</td>
+        <td>{{ order.book }}</td>
+        <td>{{ order.user }}</td>
+        <td>{{ order.created_at }}</td>
+        <td>{{ order.end_at }}</td>
+        <td>{{ order.plated_end_at }}</td>
+        <td><a href="{% url 'order:close_order' order.pk %}">Close Order</a></td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
